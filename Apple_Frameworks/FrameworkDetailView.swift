@@ -10,12 +10,16 @@ import SwiftUI
 struct FrameworkDetailView: View {
     
     var framework: Framework
+    @Binding var isShowingDetail : Bool
+    @State private var isShowingSafari = false
     
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                Button(action: {}, label:
+                Button(action: {
+                    isShowingDetail = false
+                }, label:
                         {Image(systemName: "xmark")
                         .foregroundColor(Color(.label))
                         .fontWeight(.semibold)
@@ -34,7 +38,9 @@ struct FrameworkDetailView: View {
             
             Spacer()
 
-            Button(action: {}, label: {
+            Button(action: {
+                isShowingSafari = true
+            }, label: {
                 Text ("Learn More")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -43,7 +49,9 @@ struct FrameworkDetailView: View {
                     .foregroundStyle(.white)
                     .cornerRadius(10)
             })
-            
+            .sheet(isPresented: $isShowingSafari, content: {
+                SafariView(url: URL(string: framework.url)!)
+            })
         }
         
        
@@ -51,5 +59,5 @@ struct FrameworkDetailView: View {
 }
 
 #Preview {
-    FrameworkDetailView(framework: MockData.sampleFramework)
+    FrameworkDetailView(framework: MockData.sampleFramework, isShowingDetail: .constant(false))
 }

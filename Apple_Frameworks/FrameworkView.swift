@@ -30,7 +30,7 @@ struct FrameworkView: View {
                 
                 .navigationTitle("FrameWorks  ")
                 .sheet (isPresented: $viewModel.isTapped) {
-                    FrameworkDetailView(framework: viewModel.selectedFramework ?? MockData.sampleFramework)
+                    FrameworkDetailView(framework: viewModel.selectedFramework!, isShowingDetail: $viewModel.isTapped)
                 }
             }
             
