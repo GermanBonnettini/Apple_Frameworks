@@ -10,6 +10,7 @@ import SwiftUI
 struct FrameworkDetailView: View {
     
     var framework: Framework
+    
     @Binding var isShowingDetail : Bool
     @State private var isShowingSafari = false
     

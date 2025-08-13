@@ -29,7 +29,7 @@ struct FrameworkView: View {
                 }.padding()
                 
                 .navigationTitle("FrameWorks  ")
-                .sheet (isPresented: $viewModel.isTapped) {
+                .fullScreenCover (isPresented: $viewModel.isTapped) {
                     FrameworkDetailView(framework: viewModel.selectedFramework!, isShowingDetail: $viewModel.isTapped)
                 }
             }
@@ -39,27 +39,6 @@ struct FrameworkView: View {
     }
 }
 
-
-
-struct FrameworkTitleView: View {
-    
-    let frame: Framework
-
-    var body:some View {
-        VStack {
-            Image(frame.iconName)
-                .resizable()
-                .frame(width: 80, height: 80)
-            Text(frame.name)
-                .font(.title2)
-                .fontWeight(.semibold)
-                .scaledToFit()
-                .minimumScaleFactor(0.6)
-        }
-        .padding()
-    }
-   
-}
 
 #Preview {
     FrameworkView(viewModel: FrameworkGridViewModel())
