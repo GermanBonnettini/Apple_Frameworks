@@ -35,7 +35,7 @@ struct FrameworkView: View {
             }
             
         }
-        
+        .preferredColorScheme(.dark)
     }
 }
 
